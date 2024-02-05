@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import validates
 
 db = SQLAlchemy()
 
@@ -17,6 +18,22 @@ class Patient(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, server_default=db.func.now())
 
     appointments= db.relationship('Appointment', backref= 'patient')
+
+    @validates('age','contact_number','email')
+    def validate_fields(self, key, value):
+        if key == 'age':
+            if 18 <= value <=90:
+                raise  ValueError("Age must be between 18 and 90")
+            return value
+        elif key=='contact_number':
+            if len(value)!=13 or not value.isdigit():
+                raise ValueError("Contact number should be a 13 digit number.")
+            return value
+        elif  key=='email':
+            if '@' not in value:
+                raise ValueError('Email must contain @"` character')
+            return  value.lower()
+
 
     def __repr__(self):
         return f"Patient('{self.name} {self.date_of_birth} {self.gender} {self.contact_number}')"
@@ -37,6 +54,12 @@ class  Staff(db.Model):
     
     # users=  db.relationship("User", backref="staff")
     appointments=  db.relationship("Appointment", backref="staff")
+
+    @validates('email')
+    def check_email(self, key, address):
+        if '@' not in address:
+            raise ValueError("Failed simple email validation")
+        return address
 
     def __repr__(self):
         return f"Staff: {self.name} {self.specialisation} {self.start_date}~{self.end_date if self.end_date else self.func.now()} {self.status}"
