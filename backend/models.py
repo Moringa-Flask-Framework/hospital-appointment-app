@@ -27,15 +27,15 @@ class  Staff(db.Model):
     id= db.Column(db.Integer,primary_key=True)
     name=  db.Column(db.String,nullable=False)
     specialisation=  db.Column(db.String,nullable=False)
-    start_date=  db.Column(db.DateTime,nullable=False, server_default=db.func.now())
+    start_date=  db.Column(db.DateTime,nullable=False,default=db.func.now())
     end_date=   db.Column(db.String)
     contact_number=  db.Column(db.String,unique=True)
     email = db.Column(db.String, unique=True)
     status=  db.Column(db.String)
-    created_at= db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now())
+    created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     
-    users=  db.relationship("User", backref="staff")
+    # users=  db.relationship("User", backref="staff")
     appointments=  db.relationship("Appointment", backref="staff")
 
     def __repr__(self):
@@ -47,8 +47,8 @@ class Appointment(db.Model):
     id=  db.Column(db.Integer, primary_key=True)
     appointment_type= db.Column(db.String)
     appointment_date=  db.Column(db.Date, nullable=False)
-    created_at= db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now())
+    created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"), nullable=False)
     staff_id = db.Column(db.Integer, db.ForeignKey("staffs.id"))
 
@@ -63,10 +63,10 @@ class User(db.Model):
     username = db.Column(db.String, unique=True, nullable= False)
     password = db.Column(db.String, nullable= False)
     role = db.Column(db.String, nullable= False)
-    created_at= db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime, server_default=db.func.now())
+    created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
 
-    staffs_id= db.Column(db.Integer,db.ForeignKey("staffs.id"))
+    # staffs_id= db.Column(db.Integer,db.ForeignKey("staffs.id"))
 
     def __repr__(self):
         return f"Username: {self.username} Role: {self.role}"
