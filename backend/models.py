@@ -19,20 +19,11 @@ class Patient(db.Model, SerializerMixin):
 
     appointments= db.relationship('Appointment', backref= 'patient')
 
-    @validates('age','contact_number','email')
+    @validates('email')
     def validate_fields(self, key, value):
-        if key == 'age':
-            if 18 <= value <=90:
-                raise  ValueError("Age must be between 18 and 90")
-            return value
-        elif key=='contact_number':
-            if len(value)!=13 or not value.isdigit():
-                raise ValueError("Contact number should be a 13 digit number.")
-            return value
-        elif  key=='email':
-            if '@' not in value:
+        if '@' not in value:
                 raise ValueError('Email must contain @"` character')
-            return  value.lower()
+        return  value.lower()
 
 
     def __repr__(self):
