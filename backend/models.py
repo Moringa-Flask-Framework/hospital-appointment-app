@@ -31,12 +31,13 @@ class  Staff(db.Model):
     end_date=   db.Column(db.Date)
     contact_number=  db.Column(db.String,unique=True)
     email = db.Column(db.String, unique=True)
-    status=  db.Column(db.Boolean(), default=True)
+    status=  db.Column(db.String)
     created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     
-    user_id= db.Column(db.Integer,db.ForeignKey("users.id"))
-    user=  db.relationship("User",backref="staff")
+    
+    # user_id= db.Column(db.Integer,db.ForeignKey("users.id"))
+    # user=  db.relationship("User",backref="staff")
     appointments=  db.relationship("Appointment", backref="staff")
 
     def __repr__(self):
@@ -67,7 +68,7 @@ class User(db.Model):
     created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
 
-    staff=  db.relationship("Staff", uselist=False, backref= 'user')
+    # staff=  db.relationship("Staff", backref= 'user')
 
     def __repr__(self):
         return f"Username: {self.username} Role: {self.role}"
