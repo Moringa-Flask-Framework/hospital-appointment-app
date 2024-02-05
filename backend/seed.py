@@ -15,12 +15,10 @@ with app.app_context():
     Appointment.query.delete()
     User.query.delete()
 
-    fake = Faker()
-
 
     for i in range(10):
         genders = ['male', 'female']
-        new_patient = Patient(name=fake.name(), date_of_birth=fake.date_of_birth(minimum_age=16, maximum_age=60), age = randint(1,100), gender = choice(genders), contact_number = fake.phone_number(), email = fake.email())
+        new_patient = Patient(name=fake.name(), date_of_birth=fake.date_of_birth(minimum_age=1, maximum_age=100), age = randint(1,100), gender = choice(genders), contact_number = fake.phone_number(), email = fake.email())
         db.session.add(new_patient)
         db.session.commit()
 
@@ -29,17 +27,14 @@ with app.app_context():
     for i in range(10):
 
         specialization = ["Doctor", "Nurse", "ER medic", "Receptionist", "Head Doctor"]
-        statuses = ["True", "False"]
-        start_date = date.today() - timedelta(days=65*365)
-        end_date = date.today() - timedelta(days=18*365)
-        fake_date = fake.date_between_dates(start_date, end_date)
-        new_staff = Staff(name=fake.name(), specialisation=choice(specialization), end_date = fake_date , contact_number = fake.phone_number(), email = fake.email(), status = choice(statuses))
+        statuses = ["Active", "Inactive", "On-leave"]
+        new_staff = Staff(name=fake.name(), specialisation=choice(specialization), end_date = fake.date_of_birth(minimum_age=1, maximum_age=200), contact_number = fake.phone_number(), email = fake.email(), status = choice(statuses))
         db.session.add(new_staff)
         db.session.commit()
 
+
     patients = Patient.query.all()
     staffs = Staff.query.all()
-
     for i in range(10):
         rand_patient= choice(patients)
         rand_staff= choice(staffs)
