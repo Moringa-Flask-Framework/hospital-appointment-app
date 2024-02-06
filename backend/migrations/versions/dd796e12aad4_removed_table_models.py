@@ -1,8 +1,8 @@
-"""Date fields changed
+"""Removed table models
 
-Revision ID: 9456a13657f2
+Revision ID: dd796e12aad4
 Revises: 
-Create Date: 2024-02-06 12:38:44.484463
+Create Date: 2024-02-06 15:08:40.021567
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9456a13657f2'
+revision = 'dd796e12aad4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -62,7 +62,7 @@ def upgrade():
     sa.Column('appointment_date', sa.String(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
-    sa.Column('patient_id', sa.Integer(), nullable=False),
+    sa.Column('patient_id', sa.Integer(), nullable=True),
     sa.Column('staff_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['patient_id'], ['patients.id'], ),
     sa.ForeignKeyConstraint(['staff_id'], ['staffs.id'], ),

@@ -81,7 +81,7 @@ class Appointment(db.Model,SerializerMixin):
     appointment_date=  db.Column(db.String, nullable=False)
     created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
-    patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"), nullable=False)
+    patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"))
     staff_id = db.Column(db.Integer, db.ForeignKey("staffs.id"))
 
 
