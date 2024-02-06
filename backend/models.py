@@ -41,7 +41,7 @@ class Patient(db.Model, SerializerMixin):
     def __repr__(self):
         return f"Patient('{self.name} {self.date_of_birth} {self.gender} {self.contact_number}')"
 
-class  Staff(db.Model):
+class  Staff(db.Model, SerializerMixin):
     __tablename__ = "staffs"
     
     id= db.Column(db.Integer,primary_key=True)
@@ -67,7 +67,7 @@ class  Staff(db.Model):
     def __repr__(self):
         return f"Staff: {self.name} {self.specialisation} {self.start_date}~{self.end_date if self.end_date else self.func.now()} {self.status}"
 
-class Appointment(db.Model):
+class Appointment(db.Model,  SerializerMixin):
     __tablename__ = 'appointments'
 
     id=  db.Column(db.Integer, primary_key=True)
@@ -82,7 +82,7 @@ class Appointment(db.Model):
     def __repr__(self):
         return f"Appointment('{self.id}, '{self.appointment_type}, '{self.appointment_date})"
 
-class User(db.Model):
+class User(db.Model ,SerializerMixin):
     __tablename__= 'users'
 
     id = db.Column(db.Integer, primary_key= True)
