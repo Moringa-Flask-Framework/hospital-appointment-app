@@ -47,7 +47,7 @@ class  Staff(db.Model):
     id= db.Column(db.Integer,primary_key=True)
     name=  db.Column(db.String,nullable=False)
     specialisation=  db.Column(db.String,nullable=False)
-    start_date=  db.Column(db.DateTime,nullable=False,default=db.func.now())
+    start_date=  db.Column(db.String,nullable=False)
     end_date=   db.Column(db.String)
     contact_number=  db.Column(db.String,unique=True)
     email = db.Column(db.String, unique=True)
@@ -72,7 +72,7 @@ class Appointment(db.Model):
 
     id=  db.Column(db.Integer, primary_key=True)
     appointment_type= db.Column(db.String)
-    appointment_date=  db.Column(db.Date, nullable=False)
+    appointment_date=  db.Column(db.String, nullable=False)
     created_at= db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     patient_id = db.Column(db.Integer, db.ForeignKey("patients.id"), nullable=False)

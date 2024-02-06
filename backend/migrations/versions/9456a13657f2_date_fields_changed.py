@@ -1,8 +1,8 @@
-"""Table model
+"""Date fields changed
 
-Revision ID: 94b2eaff42d9
+Revision ID: 9456a13657f2
 Revises: 
-Create Date: 2024-02-06 12:31:24.405411
+Create Date: 2024-02-06 12:38:44.484463
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '94b2eaff42d9'
+revision = '9456a13657f2'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,7 +35,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('specialisation', sa.String(), nullable=False),
-    sa.Column('start_date', sa.DateTime(), nullable=False),
+    sa.Column('start_date', sa.String(), nullable=False),
     sa.Column('end_date', sa.String(), nullable=True),
     sa.Column('contact_number', sa.String(), nullable=True),
     sa.Column('email', sa.String(), nullable=True),
@@ -59,7 +59,7 @@ def upgrade():
     op.create_table('appointments',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('appointment_type', sa.String(), nullable=True),
-    sa.Column('appointment_date', sa.Date(), nullable=False),
+    sa.Column('appointment_date', sa.String(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('updated_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=False),
     sa.Column('patient_id', sa.Integer(), nullable=False),
