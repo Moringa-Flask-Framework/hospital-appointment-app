@@ -1,6 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
+import re
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
@@ -21,9 +23,18 @@ class Patient(db.Model, SerializerMixin):
 
     @validates('email')
     def validate_fields(self, key, value):
-        if '@' not in value:
-                raise ValueError('Email must contain @"` character')
-        return  value.lower()
+        if not re.match("[^@]+@[^@]+\.[^@]+", value):
+            raise ValueError("Failed email validation")
+        return value
+    
+    @validates('age')
+    def validate_age(self, key, age):
+        if  age < 0:
+            raise ValueError("Age cannot be negative")
+        elif age > 120:
+            raise ValueError("The age of a patient should not exceed 120 years old.")
+        else:
+            return age
 
 
     def __repr__(self):
@@ -47,10 +58,10 @@ class  Staff(db.Model):
     appointments=  db.relationship("Appointment", backref="staff")
 
     @validates('email')
-    def check_email(self, key, address):
-        if '@' not in address:
-            raise ValueError("Failed simple email validation")
-        return address
+    def check_email(self, key, value):
+        if not re.match("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", value):
+            raise ValueError("Failed email validation")
+        return value
 
     def __repr__(self):
         return f"Staff: {self.name} {self.specialisation} {self.start_date}~{self.end_date if self.end_date else self.func.now()} {self.status}"
