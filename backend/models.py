@@ -10,6 +10,8 @@ db = SQLAlchemy()
 class Patient(db.Model, SerializerMixin):
     __tablename__ = 'patients'
 
+    serialize_rules = ('-appointments.patient',)
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
     date_of_birth = db.Column(db.String, nullable=False)
@@ -44,6 +46,8 @@ class Patient(db.Model, SerializerMixin):
 class  Staff(db.Model, SerializerMixin):
     __tablename__ = "staffs"
     
+    serialize_rules=('-appointments.staff',)
+    
     id= db.Column(db.Integer,primary_key=True)
     name=  db.Column(db.String,nullable=False)
     specialisation=  db.Column(db.String,nullable=False)
@@ -67,8 +71,10 @@ class  Staff(db.Model, SerializerMixin):
     def __repr__(self):
         return f"Staff: {self.name} {self.specialisation} {self.start_date}~{self.end_date if self.end_date else self.func.now()} {self.status}"
 
-class Appointment(db.Model,  SerializerMixin):
+class Appointment(db.Model,SerializerMixin):
     __tablename__ = 'appointments'
+
+    serialize_rules = ('-patient.appointments', '-staff.appointments')
 
     id=  db.Column(db.Integer, primary_key=True)
     appointment_type= db.Column(db.String)
