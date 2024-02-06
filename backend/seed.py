@@ -28,7 +28,7 @@ with app.app_context():
 
         specialization = ["Doctor", "Nurse", "ER medic", "Receptionist", "Head Doctor"]
         statuses = ["Active", "Inactive", "On-leave"]
-        new_staff = Staff(name=fake.name(), specialisation=choice(specialization), end_date = fake.date_of_birth(minimum_age=1, maximum_age=200), contact_number = fake.phone_number(), email = fake.email(), status = choice(statuses))
+        new_staff = Staff(name=fake.name(), specialisation=choice(specialization),start_date= fake.date_of_birth(minimum_age=1, maximum_age=200),end_date = fake.date_of_birth(minimum_age=1, maximum_age=200), contact_number = fake.phone_number(), email = fake.email(), status = choice(statuses))
         db.session.add(new_staff)
         db.session.commit()
 
