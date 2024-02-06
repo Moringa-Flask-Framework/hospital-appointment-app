@@ -2,7 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
 import re
-from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.ext.hybrid import hybrid_property
+# from app import bcrypt
 
 db = SQLAlchemy()
 
@@ -11,7 +12,7 @@ class Patient(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    date_of_birth = db.Column(db.Date, nullable=False)
+    date_of_birth = db.Column(db.String, nullable=False)
     age= db.Column(db.Integer,nullable=False)
     gender = db.Column(db.String, nullable=False)
     contact_number = db.Column(db.String, nullable=False)
