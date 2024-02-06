@@ -43,7 +43,7 @@ class Patient(db.Model, SerializerMixin):
     def __repr__(self):
         return f"Patient('{self.name} {self.date_of_birth} {self.gender} {self.contact_number}')"
 
-class  Staff(db.Model, SerializerMixin):
+class Staff(db.Model, SerializerMixin):
     __tablename__ = "staffs"
     
     serialize_rules=('-appointments.staff',)
