@@ -232,57 +232,6 @@ class Logout(Resource):
 
 api.add_resource(Logout,"/logout")
 
-
-
-
-
-
-
-
-
-
-
-# class PizzaData(Resource):
-#     def get_pizzas(self):
-#         all_pizzas = Pizza.query.all()
-
-#         pizza_dict= [pizza.to_dict() for pizza in all_pizzas]
-
-#         response = make_response(
-#             jsonify(pizza_dict),
-#             200
-#         )
-#         return response 
-
-# api.add_resource(PizzaData,'/pizzas')
-
-
-
-
-# class RestaurantPizzas(Resource):
-#     def post_patient_pizzas(self):
-#         new_patient_pizza = HeroPower(
-#                 price=request.form.get("price"),
-#                 pizza_id=request.form.get("pizza_id"),
-#                 patient_id=request.form.get("patient_id"),
-#             )
-
-#         db.session.add(new_patient_pizza)
-#         db.session.commit()
-
-#         patient_pizza_dict = new_patient_pizza.to_dict()
-
-#         response = make_response(
-#                 jsonify(patient_pizza_dict),
-#                 201
-#             )
-
-#         return response
-
-# api.add_resource(RestaurantPizzas, "/patient_pizzas", methods=["POST"])
-
-
-
 if __name__ == '__main__':
     app.run(port=5555)
 
