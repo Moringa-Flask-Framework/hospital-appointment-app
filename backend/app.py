@@ -213,6 +213,35 @@ class Login(Resource):
 
 api.add_resource(Login, '/login')
 
+#Sign UP User
+class SignUp(Resource):
+    def post(self):
+        data= request.get_json()
+        username= data.get('username')
+        password= data.get ('password')
+        role = data.get('role')
+        #Checking if the user already exists in the database or not
+        if  User.query.filter_by(username=username).first():
+            response = make_response(jsonify({"Error":"User already exists"}), 200)
+            return response
+            post(self)
+        
+        elif User.query.filter_by(password=password).first():
+            response = make_response(jsonify({"Error":"Password already exists"}), 200)
+            return response
+            post(self)
+        else:
+            new_user= User(username = username, password= password, role = role)
+            db.session.add(new_user)
+            db.session.commit()
+
+            new_user_dict= new_user.to_dict()
+            response = make_response(jsonify(new_user_dict), 200)
+            return response
+
+api.add_resource(SignUp, '/signup')
+
+
 #Stay logged in
 class CheckSessiom(Resource):
     def get (self):

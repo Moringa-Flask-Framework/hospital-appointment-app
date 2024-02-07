@@ -2,19 +2,19 @@ import React from 'react'
 import { useState, useEffect} from "react"
 import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
 
-function SignUp() {
+function AppointmentForm() {
 
   const[loading, setLoading]= useState(false);
   const[error, setError]= useState(null);
-  const [signUpData, setSignUpData] = useState({
-      username: '',
-      password: '',
-      role: '',     
+  const [appointmentFormData, setappointmentFormData] = useState({
+      appointment_date: '',
+      patient_id: '',
+      staff_id: '',     
     });
 
   const handleInputChange = (e) => {
-      setSignUpData({
-        ...signUpData,
+      setappointmentFormData({
+        ...appointmentFormData,
         [e.target.name]: e.target.value,
       });
     };
@@ -22,7 +22,7 @@ function SignUp() {
   const handleSubmit = async (e) =>{
       e.preventDefault();
       // console.log("I am clicked");
-      const response = await fetch('/signup', {
+      const response = await fetch('/appointments', {
           method: 'POST',
           body: JSON.stringify(signUpData),
           headers: {
@@ -47,24 +47,17 @@ function SignUp() {
   return (
     <div>
         <Container>
-            <h3 className="text-center mt-3 mb-4">Sign Up Form</h3>
+            <h3 className="text-center mt-3 mb-4">Create Appointment Form</h3>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col>
-                        <Form.Control value={signUpData.username} onChange={handleInputChange} type='text' placeholder="Enter User Name" /><br/>
-                        <Form.Control value={signUpData.password} onChange={handleInputChange} type='number' placeholder="Enter your password" /><br/>
-                        <Form.Select value={SignupData.role} onChange={handleInputChange} aria-label="Default select example">
-                            <option>Role</option>
-                            <option value="Doctor">Doctor</option>
-                            <option value="Nurse">Nurse</option>
-                            <option value="Er Medic">Er Medic </option>
-                            <option value="Receptionist">Receptionist</option>
-                            <option value="Head Doctor">Head Doctor</option>
-                        </Form.Select><br/>
+                        <Form.Control value={appointmentFormData.appointment_date} onChange={handleInputChange} type='text' placeholder="Enter Appointment Date" /><br/>
+                        <Form.Control value={appointmentFormData.patient_id} onChange={handleInputChange} type='number' placeholder="Enter patient id" /><br/>
+                        <Form.Control value={appointmentFormData.staff_id} onChange={handleInputChange} type='number' placeholder="Enter staff id" /><br/>
                     </Col>
                 </Row>
                 <Button variant="primary" type="submit">
-                    Sign Up
+                    Schedule new appointment
                 </Button>
             </Form>
         </Container>
@@ -72,4 +65,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default AppointmentForm
