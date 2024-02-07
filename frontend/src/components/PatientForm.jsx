@@ -16,7 +16,7 @@ function PatientForm() {
   const [patientData, setPatientData] = useState({
     name: '',
     date_of_birth: '',
-    age: '',
+    age: 0,
     gender: '',
     contact_number: '',
     email: '',
@@ -24,12 +24,13 @@ function PatientForm() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    const newValue = name === 'age' ? parseInt(value) : value;
     setPatientData({
       ...patientData,
-      [name]: value,
+      [name]: newValue,
     })
   }
-
+console.log(patientData)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
