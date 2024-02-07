@@ -74,16 +74,15 @@ function DoctorForm() {
                         <Form.Control value={doctorData.contact_number} onChange={handleInputChange} type='text' placeholder="Phone Number" /><br/>
                         <Form.Select value={doctorData.status} onChange={handleInputChange} aria-label="Default select example">
                             <option>Status</option>
-                            <option value="Active">Male</option>
-                            <option value="Inactive">Female</option>
-                            <option value="On-leave">Female</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="On-leave">On-leave</option>
                         </Form.Select><br/>
-                        
                     </Col>
-                </Row>
-                <Button variant="primary" type="submit">
-                    Add new Staff
-                </Button>
+                </Row><br/>
+                    <Button variant="primary" type="submit">
+                        Add new Staff
+                    </Button>
             </Form>
         </Container>
         
