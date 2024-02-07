@@ -86,7 +86,7 @@ console.log(patientData)
           {error && <p className="text-danger mt-2">{error}</p>}
         </Form>
       </Container>
-      <PatientTable patientdata= {patientData}/>
+      <PatientTable/>
     </div>
   )
 }

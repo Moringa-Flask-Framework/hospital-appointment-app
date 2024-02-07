@@ -3,7 +3,7 @@ import { useState, useEffect} from "react"
 import {Container, Table} from 'react-bootstrap';
 
 
-function PatientTable({patientdata}) {
+function PatientTable() {
     const  [patients, setPatients] = useState([])
     // window.location.reload()
     useEffect(()=>{
@@ -17,7 +17,7 @@ function PatientTable({patientdata}) {
             }
         }
         fetchPatients()
-    },[])      window.location.reload()
+    },[])
 
   return (
     <div className='mt-5'>
