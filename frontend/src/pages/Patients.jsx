@@ -8,7 +8,6 @@ function Patients() {
     <div>
         <Menu/>
         <PatientForm/>
-        <PatientTable/>
     </div>
   )
 }

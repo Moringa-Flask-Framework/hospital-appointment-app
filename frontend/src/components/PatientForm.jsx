@@ -2,16 +2,11 @@ import React from 'react'
 import { useState, useEffect} from "react"
 import { Link } from 'react-router-dom';
 import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
+import PatientTable from './PatientTable';
 
 function PatientForm() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [name, setName]= useState("")
-    const [age,setAge]=useState(0);
-    const [gender, setGender]= useState('');
-    const [email, setEmail]= useState('')
-    const [date_of_birth,  setDateOfBirth]= useState('')
-    const [contact_number, setContactNumber]= useState('')
 
   const [patientData, setPatientData] = useState({
     name: '',
@@ -54,6 +49,7 @@ console.log(patientData)
       console.error('Error posting data:', error);
     } finally {
       setLoading(false);
+      window.location.reload()
     }
   };
 
@@ -90,84 +86,8 @@ console.log(patientData)
           {error && <p className="text-danger mt-2">{error}</p>}
         </Form>
       </Container>
+      <PatientTable patientdata= {patientData}/>
     </div>
-    // <div className="w-full h-full centered-container">
-    // <div className="w-1/2 centered-div">
-    //     <Container>
-    //         <Form onSubmit={handleSubmit}>
-    //             <Row>
-    //                 <Col>
-    //                     <label>
-    //                     <input
-    //                         className="block w-full mt-4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-    //                         placeholder="Name"
-    //                         type="text"
-    //                         name="name" // add name attribute
-    //                         value={patientData.name} // add value attribute
-    //                         onChange={handleInputChange}
-    //                     />
-    //                     </label>
-    //                     <br />
-    //                     <label>
-    //                     <input
-    //                         className="block w-full mt-4 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-    //                         placeholder="Name"
-    //                         type="date"
-    //                         name="date_of_birth" // add name attribute
-    //                         value={patientData.date_of_birth} // add value attribute
-    //                         onChange={handleInputChange}
-    //                     />
-    //                     </label>
-    //                     <br />
-    //                     <label>
-    //                     <input
-    //                         className="block w-full mt-3 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-    //                         placeholder="Age"
-    //                         type="number"
-    //                         name="age" // add name attribute
-    //                         value={patientData.age} // add value attribute
-    //                         onChange={handleInputChange}
-    //                     />
-    //                     </label>
-    //                     <br />
-    //                 </Col>
-    //                 <Col>
-    //                     <label>
-    //                     <input
-    //                         className="block w-full mt-3 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-    //                         placeholder="example@mail.domain"
-    //                         type="email"
-    //                         name="email" // add name attribute
-    //                         value={patientData.email} // add value attribute
-    //                         onChange={handleInputChange}
-    //                     />
-    //                     </label>
-    //                     <br />
-    //                     <label>
-    //                     <input
-    //                         className="block w-fuuserll mt-3 rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-    //                         placeholder="Phone Number"
-    //                         type="text"
-    //                         name="contact_number" // add name attribute
-    //                         value={patientData.contact_number} // add value attribute
-    //                         onChange={handleInputChange}
-    //                     />
-    //                     </label>
-    //                     <br />
-    //                 </Col>
-    //             </Row>
-                
-                
-    //             <br />
-
-    //             <Button variant="primary" type="submit" className="mt-3 mb-4">
-    //             {loading ? 'Loading...' : 'Add Patient'} {/* show loading spinner */}
-    //             </Button>
-    //         </Form>
-    //     </Container>
-      
-//     </div>
-//   </div>
   )
 }
 
