@@ -18,7 +18,7 @@ function PatientTable() {
         }
         fetchPatients()
     },[])
-    console.log(patients)
+    // console.log(patients)
   return (
     <div className='mt-5'>
         <Container className='table-container'>

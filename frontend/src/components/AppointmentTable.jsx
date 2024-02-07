@@ -17,7 +17,7 @@ function AppointmentTable() {
         }
         fetchData()
     },[])
-    console.log(appointments)
+    // console.log(appointments)
   return (
     <div>
       <Container className='table-container'>
