@@ -6,13 +6,13 @@ import DoctorForm from './components/DoctorForm';
 import DoctorTable from './components/DoctorTable';
 import AppointmentForm from './components/AppointmentForm'
 import AppointmentTable from './components/AppointmentTable';
-// import SignUp from './components/SignUp';
 import { Route, Switch} from "react-router-dom";
 import Patients from './pages/Patients';
 import Doctor from './pages/Doctor';
 import Appointment from './pages/Appointment';
 import Menu from './components/Menu';
 import Home from './pages/Home';
+import SignUp from './components/Signup';
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
               <Route path="/signup">
               </Route>
           </Switch>
+          <SignUp/>
     </div>
   );
 }

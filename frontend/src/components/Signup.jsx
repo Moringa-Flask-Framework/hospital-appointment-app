@@ -33,6 +33,8 @@ function SignUp() {
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }
+    //   alert("User created successifully")
+      window.location.reload()
       return response.json();
       })
       .then(data=> {
@@ -46,14 +48,14 @@ function SignUp() {
 
   return (
     <div>
-        <Container>
-            <h3 className="text-center mt-3 mb-4">Sign Up Form</h3>
+        <Container className='mt-5'>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col>
-                        <Form.Control name='username' value={signUpData.username} onChange={handleInputChange} type='text' placeholder="Enter User Name" /><br/>
-                        <Form.Control name='password' value={signUpData.password} onChange={handleInputChange} type='number' placeholder="Enter your password" /><br/>
-                        <Form.Select name='role' value={SignupData.role} onChange={handleInputChange} aria-label="Default select example">
+                        <h3 className="text-center mt-3 mb-4">Create Account</h3>
+                        <Form.Control name='username' value={signUpData.username} onChange={handleInputChange} type='text' placeholder="Username" /><br/>
+                        <Form.Control name='password' value={signUpData.password} onChange={handleInputChange} type='password' placeholder="Password" /><br/>
+                        <Form.Select name='role' value={signUpData.role} onChange={handleInputChange} aria-label="Default select example">
                             <option>Role</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Nurse">Nurse</option>
@@ -61,11 +63,16 @@ function SignUp() {
                             <option value="Receptionist">Receptionist</option>
                             <option value="Head Doctor">Head Doctor</option>
                         </Form.Select><br/>
+                        <Button variant="primary" type="submit">
+                            Sign Up
+                        </Button>
+                        {/* {error && <p className="text-danger mt-2">{error}</p>} */}
+                    </Col>
+                    <Col>
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image"/>
                     </Col>
                 </Row>
-                <Button variant="primary" type="submit">
-                    Sign Up
-                </Button>
+                
             </Form>
         </Container>
     </div>

@@ -8,6 +8,7 @@ function AppointmentForm() {
   const[error, setError]= useState(null);
   const [appointmentFormData, setappointmentFormData] = useState({
       appointment_date: '',
+      appointment_type: '',
       patient_id: '',
       staff_id: '',     
     });
