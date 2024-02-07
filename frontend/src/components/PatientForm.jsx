@@ -25,7 +25,7 @@ function PatientForm() {
       [name]: newValue,
     })
   }
-console.log(patientData)
+// console.log(patientData)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -56,7 +56,7 @@ console.log(patientData)
   return (
     <div>
       <Container>
-        <h3 className="text-center mt-3 mb-4">Patient Information Form</h3>
+        <h3 className="text-center mt-3 mb-4">Patient Registration Form</h3>
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
