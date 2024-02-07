@@ -22,40 +22,41 @@ function DoctorForm() {
         });
       };
 
-    const handleSubmit = async (e) =>{
+      const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log("I am clicked");
-        const response = await fetch('/staffs', {
+        setLoading(true);
+        try {
+          const response = await fetch('/staffs', {
             method: 'POST',
-            body: JSON.stringify(doctorData),
             headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-        if (!response.ok) {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(doctorData),
+          });
+    
+          if (!response.ok) {
             throw new Error('Network response was not ok');
+          }
+    
+          const data = await response.json();
+          console.log('Data posted successfully:', data);
+        } catch (error) {
+          setError(error.message);
+          console.error('Error posting data:', error);
+        } finally {
+          setLoading(false);
+          window.location.reload()
         }
-        return response.json();
-        })
-        .then(data=> {
-        setLoading(false);
-        })
-        .catch(error => {
-        setError(error);
-        
-        setLoading(false);
-        });
-    }
+      };
   return (
     <div>
         <Container>
-            <h3 className="text-center mt-3 mb-4">New Staff Form</h3>
+            <h3 className="text-center mt-3 mb-4">Staff Registration Form</h3>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col>
-                        <Form.Control value={doctorData.name} onChange={handleInputChange} type='text' placeholder="Name" /><br/>
-                        <Form.Select value={doctorData.specialisation} onChange={handleInputChange} aria-label="Default select example">
+                        <Form.Control name='name' value={doctorData.name} onChange={handleInputChange} type='text' placeholder="Name" /><br/>
+                        <Form.Select name='specialisation' value={doctorData.specialisation} onChange={handleInputChange} aria-label="Default select example">
                             <option>Specialisation</option>
                             <option value="Doctor">Doctor</option>
                             <option value="Nurse">Nurse</option>
@@ -63,17 +64,17 @@ function DoctorForm() {
                             <option value="Receptionist">Receptionist</option>
                             <option value="Head Doctor">Head Doctor</option>
                         </Form.Select><br/>
-                        <Form.Control value={doctorData.start_date} onChange={handleInputChange} type='text' placeholder="Starting Date" /><br/>
-                        <Form.Control value={doctorData.email} onChange={handleInputChange} type='email' placeholder="example@domain.com" />
+                        <Form.Control name='start_date' value={doctorData.start_date} onChange={handleInputChange} type='date' placeholder="Starting Date" /><br/>
+                        <Form.Control name='email' value={doctorData.email} onChange={handleInputChange} type='email' placeholder="example@domain.com" />
                     </Col>
                     <Col>
-                        <Form.Select value={doctorData.gender} onChange={handleInputChange} aria-label="Default select example">
+                        <Form.Select name='gender' value={doctorData.gender} onChange={handleInputChange} aria-label="Default select example">
                             <option>Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </Form.Select><br/>
-                        <Form.Control value={doctorData.contact_number} onChange={handleInputChange} type='text' placeholder="Phone Number" /><br/>
-                        <Form.Select value={doctorData.status} onChange={handleInputChange} aria-label="Default select example">
+                        <Form.Control name='contact_number' value={doctorData.contact_number} onChange={handleInputChange} type='text' placeholder="Phone Number" /><br/>
+                        <Form.Select name='status' value={doctorData.status} onChange={handleInputChange} aria-label="Default select example">
                             <option>Status</option>
                             <option value="Active">Active</option>
                             <option value="Inactive">Inactive</option>
