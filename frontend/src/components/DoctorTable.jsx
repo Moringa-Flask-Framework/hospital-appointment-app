@@ -21,7 +21,7 @@ function DoctorTable() {
     console.log(doctors)
   return (
     <div className='mt-5'>
-        <Container>
+        <Container className='table-container'>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -37,6 +37,7 @@ function DoctorTable() {
                 <tbody>
                         {doctors.map((doctor)=>(
                             <tr key={doctor._id}>
+                            <td>{doctor.id}</td>
                             <td>{doctor.name}</td>
                             <td>{doctor.specialisation}</td>
                             <td>{doctor.start_date}</td>

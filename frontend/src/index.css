@@ -9,7 +9,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.table-container{
+    background-color: #b4b4b4;
+    border-radius: 20px;
+    height: 244px;
+    padding: 0 10px 10px 10px;
+    overflow: scroll;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

@@ -21,7 +21,7 @@ function PatientTable() {
     console.log(patients)
   return (
     <div className='mt-5'>
-        <Container>
+        <Container className='table-container'>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -34,23 +34,16 @@ function PatientTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                {patients.map(item => (
+                        <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.name}</td>
+                        <td>{item.date_of_birth}</td>
+                        <td>{item.contact_number}</td>
+                        <td>{item.email}</td>
+                        <td>{item.age}</td>
                     </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    ))}
                 </tbody>
             </Table>
         </Container>

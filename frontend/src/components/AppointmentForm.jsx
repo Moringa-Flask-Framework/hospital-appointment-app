@@ -32,7 +32,7 @@ function AppointmentForm() {
       .then(response => {
       if (!response.ok) {
           throw new Error('Network response was not ok');
-      }
+      }signUpData
       return response.json();
       })
       .then(data=> {
