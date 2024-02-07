@@ -43,6 +43,7 @@ function DoctorForm() {
         })
         .catch(error => {
         setError(error);
+        
         setLoading(false);
         });
     }
