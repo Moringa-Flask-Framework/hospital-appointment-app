@@ -24,7 +24,7 @@ function AppointmentForm() {
       // console.log("I am clicked");
       const response = await fetch('/appointments', {
           method: 'POST',
-          body: JSON.stringify(signUpData),
+          body: JSON.stringify(),
           headers: {
               'Content-Type': 'application/json'
           }
@@ -32,7 +32,7 @@ function AppointmentForm() {
       .then(response => {
       if (!response.ok) {
           throw new Error('Network response was not ok');
-      }signUpData
+      }
       return response.json();
       })
       .then(data=> {

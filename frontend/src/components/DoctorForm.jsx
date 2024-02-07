@@ -27,7 +27,7 @@ function DoctorForm() {
         // console.log("I am clicked");
         const response = await fetch('/staffs', {
             method: 'POST',
-            body: JSON.stringify(patientData),
+            body: JSON.stringify(doctorData),
             headers: {
                 'Content-Type': 'application/json'
             }
