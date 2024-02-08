@@ -10,6 +10,7 @@ import SignUp from './components/Signup';
 import AppointmentTableID from './components/AppointmentTableID'
 import Menu from './components/Menu';
 import Home from './components/Home';
+import AppointmentEditForm from './components/AppointmentEditForm';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
               </Route>
               <Route path="/patients">
                 <Patients />
+              </Route>
+              <Route exact path="/appointments/:id/edit">
+                <AppointmentEditForm />
               </Route>
               <Route path="/staffs/:id">
                 <DoctorTable />

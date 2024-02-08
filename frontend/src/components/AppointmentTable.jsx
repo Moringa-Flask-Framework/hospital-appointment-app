@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import {ButtonGroup, Container, Table, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
+
 function AppointmentTable() {
   const  [appointments, setAppointments] = useState([])
     useEffect(()=>{
@@ -19,9 +20,6 @@ function AppointmentTable() {
     },[])
     // console.log(appointments)
 
- 
-
-  
     function handleDelete(id) {
         fetch(`/appointments/${id}`, {
             method: "DELETE",
@@ -37,7 +35,6 @@ function AppointmentTable() {
 
       } 
     
-
   return (
     <div>
       <Container className='table-container'>
@@ -51,7 +48,8 @@ function AppointmentTable() {
                     <th>Patient Age</th>
                     <th>Staff Name</th>
                     <th></th>
-                    <th>Action</th>
+                    <th>Delete</th>
+                    <th>Update</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +63,8 @@ function AppointmentTable() {
                         <td>{item.staff.name}</td>
                         <td>
                         <Link to={`/appointments/${item.id}`}>More</Link></td>
-                        <td><Button onClick={() => handleDelete(item.id)}>Delete</Button></td>
+                        <td><Button variant='danger' onClick={() => handleDelete(item.id)}>Delete</Button></td>
+                        <td><Button variant='success'><Link to={`/appointments/${item.id}/edit`} className="link">Update</Link></Button></td>
                     </tr>
                     ))}
                 </tbody>
