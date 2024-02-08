@@ -141,7 +141,7 @@ class AppointmentData(Resource):
         appointment_type= data.get ('appointment_type')
         appointment_date= data.get('appointment_date')
         patient_id =  data.get('patient_id')
-        staff_id = data.get*('staff_id')
+        staff_id = data.get('staff_id')
 
         try:
             new_appointment= Appointment(appointment_type = appointment_type, appointment_date= appointment_date, patient_id = patient_id, staff_id= staff_id)

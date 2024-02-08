@@ -42,7 +42,7 @@ function App() {
               <Route path="/signup">
               </Route>
           </Switch>
-          <SignUp/>
+          {/* <SignUp/> */}
     </div>
   );
 }
