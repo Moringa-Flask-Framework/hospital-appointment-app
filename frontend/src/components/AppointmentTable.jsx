@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import {Container, Table} from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 function AppointmentTable() {
   const  [appointments, setAppointments] = useState([])
-
     useEffect(()=>{
         async function fetchData(){
             try{
@@ -18,6 +18,8 @@ function AppointmentTable() {
         fetchData()
     },[])
     // console.log(appointments)
+
+
   return (
     <div>
       <Container className='table-container'>
@@ -41,6 +43,7 @@ function AppointmentTable() {
                         <td>{item.patient.name}</td>
                         <td>{item.patient.age}</td>
                         <td>{item.staff.name}</td>
+                        <Link to={`/appointments/${item.id}`}>View Details</Link>
                     </tr>
                     ))}
                 </tbody>
