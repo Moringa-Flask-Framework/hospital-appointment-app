@@ -1,18 +1,13 @@
 import './App.css';
 import Login from './components/Login';
-import PatientForm from './components/PatientForm';
 import PatientTable from './components/PatientTable';
-import DoctorForm from './components/DoctorForm';
 import DoctorTable from './components/DoctorTable';
-import AppointmentForm from './components/AppointmentForm'
-import AppointmentTable from './components/AppointmentTable';
 import { Route, Switch} from "react-router-dom";
 import Patients from './pages/Patients';
 import Doctor from './pages/Doctor';
 import Appointment from './pages/Appointment';
-import Menu from './components/Menu';
-import Home from './pages/Home';
 import SignUp from './components/Signup';
+import AppointmentTableID from './components/AppointmentTableID'
 
 function App() {
   return (
@@ -31,7 +26,7 @@ function App() {
                 <Doctor />
               </Route>
               <Route path="/appointments/:id">
-                <AppointmentTable />
+                <AppointmentTableID />
               </Route>
               <Route path="/appointments">
                 <Appointment />
@@ -40,6 +35,7 @@ function App() {
                 <Login />
               </Route>
               <Route path="/signup">
+                <SignUp/>
               </Route>
           </Switch>
           {/* <SignUp/> */}

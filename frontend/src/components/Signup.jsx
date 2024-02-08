@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect} from "react"
 import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
 
 function SignUp() {
 
@@ -11,6 +12,8 @@ function SignUp() {
       password: '',
       role: '',     
     });
+
+  const history = useHistory();
 
   const handleInputChange = (e) => {
       setSignUpData({
@@ -34,8 +37,11 @@ function SignUp() {
           throw new Error('Network response was not ok');
       }
     //   alert("User created successifully")
-      window.location.reload()
+      // window.location.reload();
+      history.push('/login');
       return response.json();
+      
+
       })
       .then(data=> {
       setLoading(false);
