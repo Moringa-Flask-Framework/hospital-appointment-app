@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Container, Table} from 'react-bootstrap';
+import {ButtonGroup, Container, Table, Button} from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 function AppointmentTable() {
@@ -19,6 +19,24 @@ function AppointmentTable() {
     },[])
     // console.log(appointments)
 
+ 
+
+  
+    function handleDelete(id) {
+        fetch(`/appointments/${id}`, {
+            method: "DELETE",
+            }).then((r) => {
+            if (r.ok) {
+                setAppointments((appointments) =>
+                appointments.filter((appointment) => appointment.id !== id)
+                );
+            }
+            });
+
+            alert ("Deleted")
+
+      } 
+    
 
   return (
     <div>
@@ -32,6 +50,8 @@ function AppointmentTable() {
                     <th>Patient Name</th>
                     <th>Patient Age</th>
                     <th>Staff Name</th>
+                    <th></th>
+                    <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +63,9 @@ function AppointmentTable() {
                         <td>{item.patient.name}</td>
                         <td>{item.patient.age}</td>
                         <td>{item.staff.name}</td>
-                        <Link to={`/appointments/${item.id}`}>View Details</Link>
+                        <td>
+                        <Link to={`/appointments/${item.id}`}>More</Link></td>
+                        <td><Button onClick={() => handleDelete(item.id)}>Delete</Button></td>
                     </tr>
                     ))}
                 </tbody>
