@@ -8,11 +8,16 @@ import Doctor from './pages/Doctor';
 import Appointment from './pages/Appointment';
 import SignUp from './components/Signup';
 import AppointmentTableID from './components/AppointmentTableID'
+import Menu from './components/Menu';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
           <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
               <Route path="/patients/:id">
                 <PatientTable />
               </Route>
