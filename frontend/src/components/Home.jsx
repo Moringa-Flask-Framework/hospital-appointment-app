@@ -15,12 +15,16 @@ function Home() {
             <h2 className='menuhead mb-12'>Hospital appointment system</h2>
             <Col>
             <Link to={`/staffs`}><FaUserDoctor className='icons' /> </Link>
+            <p className='mt-3'>Staff Management</p>
             </Col>
             <Col>
-            <Link to={`/patients`}><MdSick className='icons' /> </Link>
+            <Link to={`/patients`}><MdSick className='icons' /> 
+            </Link>
+            <p className='mt-3'>Patient Management</p>
             </Col>
             <Col>
             <Link to={`/appointments`}><FaClipboardList className='icons' /> </Link>
+            <p  className="mt-3">Appointment Management</p>
             </Col>
           </Row>
         </Container>
