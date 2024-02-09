@@ -54,7 +54,7 @@ function AppointmentForm() {
       })
       
       .catch(error => {
-      setError(error);
+    //   setError(error);
       setLoading(false);
       })
       .finally(() => {
