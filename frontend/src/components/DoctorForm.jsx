@@ -4,7 +4,7 @@ import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
 
 function DoctorForm() {
     const[loading, setLoading]= useState(false);
-    const[error, setError]= useState(null);
+    // const[error, setError]= useState(null);
     const [doctorData, setdoctorData] = useState({
         name: '',
         specialisation: '',
