@@ -11,7 +11,7 @@ function PatientForm() {
   const [patientData, setPatientData] = useState({
     name: '',
     date_of_birth: '',
-    age: 0,
+    age: '',
     gender: '',
     contact_number: '',
     email: '',
