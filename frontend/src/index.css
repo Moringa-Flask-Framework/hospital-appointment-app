@@ -19,6 +19,7 @@ body {
 .table-container th{
   position: sticky; 
   top: 0; 
+  background-color: lightblue;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
