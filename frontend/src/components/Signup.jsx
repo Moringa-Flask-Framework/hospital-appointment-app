@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 function SignUp() {
 
   const[loading, setLoading]= useState(false);
-  const[error, setError]= useState(null);
+  // const[error, setError]= useState(null);
   const [signUpData, setSignUpData] = useState({
       username: '',
       password: '',

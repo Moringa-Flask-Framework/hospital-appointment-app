@@ -5,7 +5,7 @@ import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
 function AppointmentForm() {
 
   const[loading, setLoading]= useState(false);
-  const[error, setError]= useState(null);
+//   const[error, setError]= useState(null);
   const [staffId, setStaffId] = useState("");
   const [patientId, setPatientId] = useState("");
   const[staffs, setStaffs]= useState([])
