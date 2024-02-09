@@ -41,7 +41,7 @@ function DoctorForm() {
           const data = await response.json();
           console.log('Data posted successfully:', data);
         } catch (error) {
-          setError(error.message);
+          // setError(error.message);
           console.error('Error posting data:', error);
         } finally {
           setLoading(false);
