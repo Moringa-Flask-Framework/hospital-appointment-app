@@ -6,18 +6,31 @@ from flask_restful import Api, Resource
 from werkzeug.exceptions import NotFound
 import os
 # from flask_Bcrypt import Bcrypt
+from dotenv import load_dotenv
+load_dotenv()
 
 from models import db, User, Appointment, Patient,Staff
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_url_path='',
+    static_folder='../frontend/build',
+    template_folder='../fronend/build'
+    )
 # bcrypt= Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hospital.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 migrate = Migrate(app, db)
 
 db.init_app(app)
 api= Api(app)
+
+# @app.errorhandler(404)
+# def not_found(e):
+#     return render_template("index.html")
+
 
 
 class Index(Resource):
@@ -168,9 +181,11 @@ class AppointmentByID(Resource):
         )
         return response 
     
-    def patch(self,id):
+    def patch(self, id):
         appointment = Appointment.query.filter_by(id=id).first()
         data= request.get_json()
+        # date= data.get("appointment_date")
+        # appointment.appointment_date= date
         if not appointment:
             error_dict=  {'error': 'Appointment not found'}
             response= make_response(jsonify(error_dict), 404)
@@ -178,11 +193,11 @@ class AppointmentByID(Resource):
         else:
            for attr, value in data.items():
                 setattr(appointment, attr, value)
-                db.session.add(appointment)
-                db.session.commit()
-                appointment_dict= appointment.to_dict()
-                response= make_response(jsonify(appointment_dict), 200)
-                return response 
+        db.session.add(appointment)
+        db.session.commit()
+        appointment_dict= appointment.to_dict()
+        response= make_response(jsonify(appointment_dict), 200)
+        return response 
 
 
     def delete(self,id):

@@ -39,7 +39,7 @@ function AppointmentEditForm() {
         }).then((r) => {
             if (r.ok) {
                 history.push(`/appointments`);
-                alert("Successfully updated appointment!");
+                // alert("Successfully updated appointment!");
                 return r.json()
             } else {
                 r.json().then((err) =>
