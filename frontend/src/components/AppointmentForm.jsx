@@ -26,41 +26,6 @@ function AppointmentForm() {
             .then(setPatients);
     }, []);
 
-
-//   const handleSubmit = async (e) =>{
-//       e.preventDefault();
-//       const formData = {
-//         staff_id: parseInt(staffId),
-//         patient_id :parseInt(patientId),
-//         appointment_date,
-//         appointment_type,
-//       };
-//     //   console.log(formData);
-//       const response = await fetch('/appointments', {
-//           method: 'POST',
-//           body: JSON.stringify(formData),
-//           headers: {
-//               'Content-Type': 'application/json'
-//           }
-//       })
-//       .then(response => {
-//       if (!response.ok) {
-//           throw new Error('Network response was not ok');
-//       }
-//       return response.json();
-//       })
-//       .then(data=> {
-//       setLoading(false);
-//       })
-      
-//       .catch(error => {
-//     //   setError(error);
-//       setLoading(false);
-//       })
-//       .finally(() => {
-//         window.location.reload()
-//       })
-//   }
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = {
