@@ -189,7 +189,7 @@ class AppointmentByID(Resource):
         # appointment.appointment_date= date
         if not appointment:
             error_dict=  {'error': 'Appointment not found'}
-            response= make_response(jsonify(error_dict), 404)
+            response= make_response(error_dict, 404)
             return response
         else:
            for attr, value in data.items():
@@ -197,7 +197,7 @@ class AppointmentByID(Resource):
         db.session.add(appointment)
         db.session.commit()
         appointment_dict= appointment.to_dict()
-        response= make_response(jsonify(appointment_dict), 200)
+        response= make_response(appointment_dict, 200)
         return response 
 
 
