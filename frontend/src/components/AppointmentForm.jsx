@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect} from "react"
-import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
+import {Form,Row,Col,Container, Button} from 'react-bootstrap';
 
 function AppointmentForm() {
 
@@ -27,39 +27,70 @@ function AppointmentForm() {
     }, []);
 
 
-  const handleSubmit = async (e) =>{
-      e.preventDefault();
-      const formData = {
-        staff_id: parseInt(staffId),
-        patient_id :parseInt(patientId),
-        appointment_date,
-        appointment_type,
-      };
-    //   console.log(formData);
-      const response = await fetch('/appointments', {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      })
-      .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return response.json();
-      })
-      .then(data=> {
-      setLoading(false);
-      })
+//   const handleSubmit = async (e) =>{
+//       e.preventDefault();
+//       const formData = {
+//         staff_id: parseInt(staffId),
+//         patient_id :parseInt(patientId),
+//         appointment_date,
+//         appointment_type,
+//       };
+//     //   console.log(formData);
+//       const response = await fetch('/appointments', {
+//           method: 'POST',
+//           body: JSON.stringify(formData),
+//           headers: {
+//               'Content-Type': 'application/json'
+//           }
+//       })
+//       .then(response => {
+//       if (!response.ok) {
+//           throw new Error('Network response was not ok');
+//       }
+//       return response.json();
+//       })
+//       .then(data=> {
+//       setLoading(false);
+//       })
       
-      .catch(error => {
-    //   setError(error);
-      setLoading(false);
-      })
-      .finally(() => {
-        window.location.reload()
-      })
+//       .catch(error => {
+//     //   setError(error);
+//       setLoading(false);
+//       })
+//       .finally(() => {
+//         window.location.reload()
+//       })
+//   }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = {
+            staff_id: parseInt(staffId),
+            patient_id: parseInt(patientId),
+            appointment_date,
+            appointment_type,
+        };
+        try {
+            const response = await fetch('/appointments', {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            setLoading(false);
+        } catch (error) {
+            // Handle error
+            setLoading(false);
+        } finally {
+            window.location.reload();
+        }
+    };
+
+  if  (loading){
+    return <h4>Loading...</h4>
   }
 
   return (

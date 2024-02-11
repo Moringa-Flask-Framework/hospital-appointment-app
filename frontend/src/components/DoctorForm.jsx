@@ -1,6 +1,6 @@
 import React from 'react'
-import { useState, useEffect} from "react"
-import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
+import { useState} from "react"
+import {Form,Row,Col,Container, Button} from 'react-bootstrap';
 
 function DoctorForm() {
     const[loading, setLoading]= useState(false);
@@ -44,10 +44,13 @@ function DoctorForm() {
           // setError(error.message);
           console.error('Error posting data:', error);
         } finally {
-          setLoading(false);
+          // setLoading(false);
           window.location.reload()
         }
       };
+      if  (loading){
+        return <h4>Loading...</h4>
+      }
   return (
     <div>
         <Container>

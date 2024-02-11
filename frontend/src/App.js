@@ -8,7 +8,6 @@ import Doctor from './pages/Doctor';
 import Appointment from './pages/Appointment';
 import SignUp from './components/Signup';
 import AppointmentTableID from './components/AppointmentTableID'
-import Menu from './components/Menu';
 import Home from './components/Home';
 import AppointmentEditForm from './components/AppointmentEditForm';
 
