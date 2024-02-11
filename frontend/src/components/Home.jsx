@@ -5,10 +5,13 @@ import {Link} from 'react-router-dom'
 import { FaUserDoctor } from "react-icons/fa6";
 import { MdSick } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
+import Header from './Header';
+import Footer from './Footer';
 
 function Home() {
   return (
     <div>
+      <Header/>
       <Menu/>
         <Container>
           <Row >
@@ -28,6 +31,7 @@ function Home() {
             </Col>
           </Row>
         </Container>
+        <Footer/>
     </div>
   )
 }
