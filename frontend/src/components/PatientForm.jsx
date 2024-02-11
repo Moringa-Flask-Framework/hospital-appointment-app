@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState, useEffect} from "react"
-import { Link } from 'react-router-dom';
-import {Form,Row,Col,Card,Container, Button} from 'react-bootstrap';
+import { useState} from "react"
+// import { Link } from 'react-router-dom';
+import {Form,Row,Col,Container, Button} from 'react-bootstrap';
 import PatientTable from './PatientTable';
 
 function PatientForm() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import {Container, Table, Card, ListGroup, Button} from 'react-bootstrap';
+import {Container, Card, ListGroup, Button} from 'react-bootstrap';
 import { useParams, Link } from "react-router-dom";
 import Menu from './Menu';
 
