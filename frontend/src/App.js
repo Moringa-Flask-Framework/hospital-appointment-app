@@ -1,12 +1,12 @@
 import './App.css';
-import Login from './components/Login';
+// import Login from './components/Login';
 import PatientTable from './components/PatientTable';
 import DoctorTable from './components/DoctorTable';
 import { Route, Switch} from "react-router-dom";
 import Patients from './pages/Patients';
 import Doctor from './pages/Doctor';
 import Appointment from './pages/Appointment';
-import SignUp from './components/Signup';
+// import SignUp from './components/Signup';
 import AppointmentTableID from './components/AppointmentTableID'
 import Home from './components/Home';
 import AppointmentEditForm from './components/AppointmentEditForm';
@@ -40,13 +40,13 @@ function App() {
                 <Appointment />
               </Route>
               <Route path="/login">
-                <Login />
+                {/* <Login /> */}
               </Route>
               <Route path="/logout">
                 {/* <Logout /> */}
               </Route>
               <Route path="/signup">
-                <SignUp/>
+                {/* <SignUp/> */}
               </Route>
           </Switch>
           {/* <SignUp/> */}
